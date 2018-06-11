@@ -2,21 +2,18 @@ function hour(a, b){
     const sek = a + b;
     const h1 = sek / 3600;
     const h2 = Math.floor(h1);
-    const result = h2;
-    return result;
+    return h2;
 }
 
 function minute(c, d){
     const m1 = (c + d - Math.floor((c + d)/3600) * 3600) / 60;
-    const m2 = Math.floor(m1);
-    const result = m2;      
-    return result;
+    const m2 = Math.floor(m1);      
+    return m2;
 }
 
 function sekond(e, f){
     const s1 = e + f - Math.floor((e + f)/3600) * 3600 - Math.floor((e + f - Math.floor((e + f)/3600) * 3600) / 60) * 60;
-    const result = s1;
-    return result;
+    return s1;
 }
 
 function plural(count, form1, form2, form3) {
