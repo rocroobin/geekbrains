@@ -1,21 +1,18 @@
 const SECONDS_IN_HOUR = 3600;
-const MINUTES_IN_HOUR = 60;
+const SECONDS_IN_MINUTES = 60;
 
 function getHoursCount(a){
-    const h1 = a / SECONDS_IN_HOUR;
-    const h2 = Math.floor(h1);
-    return h2;
+    return Math.floor(a / SECONDS_IN_HOUR);
 }
 
 function getMinutesCount(b){
-    const m1 = (b - Math.floor(b/SECONDS_IN_HOUR) * SECONDS_IN_HOUR) / MINUTES_IN_HOUR;
-    const m2 = Math.floor(m1);      
-    return m2;
+// в restMinutes я найду остаток минут, которые не попали в целый час
+    const restMinutes = b % SECONDS_IN_HOUR;
+    return Math.floor(restMinutes / SECONDS_IN_MINUTES);
 }
 
 function getSecondsCount(c){
-    const s1 = c - Math.floor(c/SECONDS_IN_HOUR) * SECONDS_IN_HOUR - Math.floor((c - Math.floor(c/SECONDS_IN_HOUR) * SECONDS_IN_HOUR) / MINUTES_IN_HOUR) * MINUTES_IN_HOUR;
-    return s1;
+    return c % SECONDS_IN_MINUTES;
 }
 
 function plural(count, form1, form2, form3) {
