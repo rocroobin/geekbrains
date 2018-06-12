@@ -1,18 +1,19 @@
-function hour(a, b){
-    const sek = a + b;
-    const h1 = sek / 3600;
+const SECONDS_IN_HOUR = 3600;
+const MINUTES_IN_HOUR = 60;
+function hour(a){
+    const h1 = a / SECONDS_IN_HOUR;
     const h2 = Math.floor(h1);
     return h2;
 }
 
-function minute(c, d){
-    const m1 = (c + d - Math.floor((c + d)/3600) * 3600) / 60;
+function minute(b){
+    const m1 = (b - Math.floor(b/SECONDS_IN_HOUR) * SECONDS_IN_HOUR) / MINUTES_IN_HOUR;
     const m2 = Math.floor(m1);      
     return m2;
 }
 
-function sekond(e, f){
-    const s1 = e + f - Math.floor((e + f)/3600) * 3600 - Math.floor((e + f - Math.floor((e + f)/3600) * 3600) / 60) * 60;
+function sekond(c){
+    const s1 = c - Math.floor(c/SECONDS_IN_HOUR) * SECONDS_IN_HOUR - Math.floor((c - Math.floor(c/SECONDS_IN_HOUR) * SECONDS_IN_HOUR) / MINUTES_IN_HOUR) * MINUTES_IN_HOUR;
     return s1;
 }
 
@@ -42,11 +43,12 @@ const paramT1 = process.argv[2];
 const t1 = parseInt(paramT1, 10);
 const paramT2 = process.argv[3];
 const t2 = parseInt(paramT2, 10);
-const h = hour(t1, t2);
+const sum = t1 + t2;
+const h = hour(sum);
 const hr = hours(h);
-const m = minute(t1, t2);
+const m = minute(sum);
 const mi = minutes(m);
-const s = sekond(t1, t2);
+const s = sekond(sum);
 const se = sekonds(s);
 const result = [h, hr, m, mi, s, se].join(' ');
 console.log(result);
