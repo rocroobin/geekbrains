@@ -16,25 +16,28 @@ function getSecondsCount(c){
 }
 
 function plural(count, form1, form2, form3) {
-    if ([1, 21, 31, 41, 51].includes(count)) {
+    if ([11, 12, 13, 14].includes(count % 100)){
+        return form3;
+    }
+    if ((count % 10) === 1) {
         return form1;
     }
-    if ([2, 3, 4, 22, 23, 24, 32, 33, 34, 42, 43, 44, 52, 53, 54].includes(count)) {
+    if ([2, 3, 4].includes(count % 10)) {
         return form2; 
     }
     return form3;
 }
 
-function getHoursText(k) {
-    return plural(k, "час", "часа", "часов");
+function getHoursText(d) {
+    return plural(d, "час", "часа", "часов");
 }
 
-function getMinutesText(l) {
-    return plural(l, "минута", "минуты", "минут");
+function getMinutesText(e) {
+    return plural(e, "минута", "минуты", "минут");
 }
 
-function getSecondsText(n) {
-    return plural(n, "секунда", "секунды", "секунд");
+function getSecondsText(f) {
+    return plural(f, "секунда", "секунды", "секунд");
 }
 
 const paramT1 = process.argv[2];
