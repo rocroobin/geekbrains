@@ -48,5 +48,12 @@ const m = getMinutesCount(sum);
 const mi = getMinutesText(m);
 const s = getSecondsCount(sum);
 const se = getSecondsText(s);
-const result = [h, hr, m, mi, s, se].join(' ');
+const result = [
+    h !== 0 ? h : '',
+    h !== 0 ? hr : '',
+    m !== 0 ? m : '',
+    m !== 0 ? mi : '',
+    s !== 0 ? s : '',
+    s !== 0 ? se : '',
+    ].join(' ');
 console.log(result);
