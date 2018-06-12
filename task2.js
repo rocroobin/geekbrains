@@ -1,15 +1,23 @@
-function сaesarShift(n, k){
-	let source = "";
-for (let i = 0; i < source.length; i++) {
-const code = source.charCodeAt(i);
-const newCode = сaesarShift(code, shift);
-const newChar = String.fromCharCode(newCode);
-}
-	return newChar;
-}
-
-const n = process.argv[2];
+let source = process.argv[2];
 const paramK = process.argv[3];
 const k = parseInt(paramK, 10);
-const sipher = сaesarShift(n, k);
-console.log(sipher);
+
+function caesarShift(code, shift) {
+	const codeBigA = 65;
+    const codeBigZ = 90;
+    const codeSmallA = 97;
+    const codeSmallZ = 122;
+    return code + shift;
+}
+
+let result = '';
+for (let i = 0; i < source.length; i++) {
+    // получу код текущего символа
+    const code = source.charCodeAt(i);
+    // вычислю новый код символа
+    const newCode = caesarShift(code, k);
+    // вычислю новый символ
+	const newChar = String.fromCharCode(newCode);
+	result += newChar;
+}
+console.log(result);
