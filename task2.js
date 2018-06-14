@@ -8,12 +8,18 @@ function caesarShift(code, shift) {
     const codeSmallA = 97;
     const codeSmallZ = 122;
     
+    if (codeBigA > code ||  code > codeSmallZ){
+        return code;
+        }
+        if (codeBigZ < code && code < codeSmallA){
+        return code;    
+        } 
+
     const alphabetLength = codeBigZ - codeBigA + 1;
     const isBig = code <= codeBigZ;
     const startShift = isBig ? codeBigA : codeSmallA;
  
     const newCode = (code + shift - startShift) % alphabetLength + startShift;
-  
     return newCode;
 }
 
@@ -24,7 +30,8 @@ for (let i = 0; i < source.length; i++) {
     // вычислю новый код символа
     const newCode = caesarShift(code, k);
     // вычислю новый символ
-	  const newChar = String.fromCharCode(newCode);
-	  result += newChar;
+	const newChar = String.fromCharCode(newCode);
+    result += newChar;
 }
+
 console.log(result);
